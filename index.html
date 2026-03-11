@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NextGen Solutions Job Portal</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+h2 {
+  margin-bottom: 20px;
+}
+input {
+  width: 90%;
+  padding: 8px;
+  margin: 8px auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: block;
+}
+button {
+  width: 95%;
+  padding: 10px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Job Application</h2>
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="text" id="email" placeholder="Email Address">
+  <input type="text" id="phone" placeholder="Phone Number">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="validateForm()">Submit</button>
+  <div id="message" class="message"></div>
+</div>
+
+<script>
+function validateForm() {
+  var name = document.getElementById("name").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var phone = document.getElementById("phone").value.trim();
+  var password = document.getElementById("password").value.trim();
+
+  var namePattern = /^[A-Za-z ]{3,}$/;
+  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  var phonePattern = /^[0-9]{10}$/;
+  var passwordPattern = /^(?=.*\d).{6,}$/;
+
+  var message = document.getElementById("message");
+
+  if (!namePattern.test(name)) {
+    message.innerHTML = "Invalid Name";
+    message.className = "message error";
+  } else if (!emailPattern.test(email)) {
+    message.innerHTML = "Invalid Email Address";
+    message.className = "message error";
+  } else if (!phonePattern.test(phone)) {
+    message.innerHTML = "Invalid Phone Number";
+    message.className = "message error";
+  } else if (!passwordPattern.test(password)) {
+    message.innerHTML = "Weak Password";
+    message.className = "message error";
+  } else {
+    message.innerHTML = "Application Submitted Successfully";
+    message.className = "message success";
+  }
+}
+</script>
+</body>
+</html>
+
+
